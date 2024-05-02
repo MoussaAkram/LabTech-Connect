@@ -1,0 +1,47 @@
+<app-header>
+  <div class="px-6 text-center text-white md:px-12" *ngIf="currentRoute == '/home/:' || currentRoute == '/page1/:'  || currentRoute == '/vision/:'">
+    <h1 class="mb-6 text-5xl font-bold">Personal Blog</h1>
+  </div>
+  <div class="px-6 text-center text-white md:px-12" *ngIf="currentRoute == '/test'">
+    <h1 class="mb-6 text-5xl font-bold">Page Admin</h1>
+
+    <button
+      (click)="logOut()"
+      type="button"
+      class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      Logout
+    </button>
+    <button>
+      <app-register></app-register>
+    </button>
+    <div>
+      <button
+        routerLink="/register"
+        type="button"
+        class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+        data-te-ripple-init
+        data-te-ripple-color="light">
+        UserTable
+      </button>
+    </div>
+  </div>
+  <div class="px-6 text-center text-white md:px-12" *ngIf="currentRoute == '/register'">
+    <h1 class="mb-6 text-5xl font-bold">User Table</h1>
+    <button
+      routerLink="/test"
+      type="button"
+      class="inline-block rounded border-2 border-neutral-50 px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal text-neutral-50 transition duration-150 ease-in-out hover:border-neutral-100 hover:bg-neutral-500 hover:bg-opacity-10 hover:text-neutral-100 focus:border-neutral-100 focus:text-neutral-100 focus:outline-none focus:ring-0 active:border-neutral-200 active:text-neutral-200 dark:hover:bg-neutral-100 dark:hover:bg-opacity-10"
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      principal
+    </button>
+  </div>
+</app-header>
+<div class="flex h-screen">
+<app-nav *ngIf="currentRoute == '/home/:' || currentRoute == '/page1/:' "  pageId='{{currentId}}' ></app-nav>
+<app-home   *ngIf="currentRoute == '/vision/:' "  pageId='{{currentId}}'></app-home>
+<router-outlet></router-outlet>
+</div>
+<app-footer  *ngIf="currentRoute == '/home/:' || currentRoute == '/vision/:' "></app-footer>
